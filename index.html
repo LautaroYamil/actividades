@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HELLO WORLD - Periódico en Línea</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Variables de colores y estilos */
+        :root {
+            --dark-green: #1e3d32;
+            --medium-green: #2a5746;
+            --light-green: #71B100;
+            --dark-gray: #333333;
+            --medium-gray: #777777;
+            --light-gray: #f5f5f5;
+            --white: #ffffff;
+            --transition: all 0.3s ease;
+        }
+        
+        /* Reset y estilos base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Helvetica', 'Arial', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-gray);
+            background-color: var(--white);
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            margin-bottom: 1rem;
+            color: var(--dark-green);
+        }
+        
+        a {
+            text-decoration: none;
+            color: #0066cc;
+            transition: var(--transition);
+        }
+        
+        a:hover {
+            color: var(--light-green);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header */
+        header {
+            padding: 2.5rem 0 1.5rem;
+            text-align: center;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .site-title {
+            font-size: 3.5rem;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+            letter-spacing: 3px;
+            color: var(--dark-green);
+        }
+        
+        .site-subtitle {
+            font-size: 0.9rem;
+            color: var(--medium-gray);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 2rem;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: flex-end;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav li {
+            margin-left: 1.8rem;
+        }
+        
+        nav a {
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            color: var(--dark-gray);
+            padding: 0.5rem 0;
+            position: relative;
+        }
+        
+        nav a:hover {
+            color: var(--light-green);
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--light-green);
+            transition: var(--transition);
+        }
+        
+        nav a:hover::after {
+            width: 100%;
+        }
+        
+        /* Main Content */
+        .featured-section {
+            display: flex;
+            margin: 2.5rem 0;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .featured-image {
+            flex: 1;
+            padding-right: 2rem;
+        }
+        
+        .featured-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+        }
+        
+        .featured-content {
+            flex: 1;
+        }
+        
+        .featured-content h2 {
+            font-size: 2rem;
+            margin-bottom: 0.8rem;
+            line-height: 1.2;
+        }
+        
+        .article-meta {
+            color: var(--medium-gray);
+            font-style: italic;
+            font-size: 0.9rem;
+            margin-bottom: 1.2rem;
+        }
+        
+        .featured-content p {
+            margin-bottom: 1rem;
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+        
+        /* Recent Posts Section */
+        .recent-posts {
+            background-color: var(--light-gray);
+            padding: 2.5rem 0;
+            margin-bottom: 2rem;
+        }
+        
+        .section-title {
+            text-align: center;
+            text-transform: uppercase;
+            font-size: 1.5rem;
+            letter-spacing: 1px;
+            margin-bottom: 1.5rem;
+            color: var(--dark-green);
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: var(--light-green);
+        }
+        
+        .post-list {
+            list-style: none;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .post-list li {
+            padding: 1rem 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .post-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .post-list a {
+            display: block;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: var(--transition);
+        }
+        
+        .post-list a:hover {
+            color: var(--light-green);
+            padding-left: 5px;
+        }
+        
+        .post-date {
+            font-size: 0.85rem;
+            color: var(--medium-gray);
+            display: block;
+            margin-top: 0.3rem;
+        }
+        
+        /* Sidebar Sections */
+        .sidebar-sections {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .sidebar-section {
+            padding: 1.8rem;
+            background-color: var(--light-gray);
+            border-radius: 4px;
+        }
+        
+        .sidebar-section h3 {
+            text-transform: uppercase;
+            font-size: 1.2rem;
+            margin-bottom: 1.2rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--light-green);
+        }
+        
+        .trending-list {
+            list-style: none;
+        }
+        
+        .trending-list li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .trending-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .trending-list a {
+            font-weight: bold;
+            transition: var(--transition);
+        }
+        
+        .trending-list a:hover {
+            color: var(--light-green);
+        }
+        
+        /* Tags Cloud */
+        .tags-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+        
+        .tag {
+            background-color: var(--white);
+            color: var(--dark-gray);
+            padding: 0.5rem 1rem;
+            border-radius: 3px;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        .tag:hover {
+            background-color: var(--light-green);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+        
+        .tag-large {
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+        
+        .tag-small {
+            font-size: 0.8rem;
+            opacity: 0.8;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-green);
+            color: var(--white);
+            padding: 2.5rem 0;
+            text-align: center;
+            margin-top: 3rem;
+        }
+        
+        .copyright {
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1.2rem;
+        }
+        
+        .social-icons a {
+            color: var(--white);
+            font-size: 1.3rem;
+            transition: var(--transition);
+        }
+        
+        .social-icons a:hover {
+            color: var(--light-green);
+            transform: translateY(-3px);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .sidebar-sections {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .featured-section {
+                flex-direction: column;
+            }
+            
+            .featured-image {
+                padding-right: 0;
+                margin-bottom: 1.5rem;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav li {
+                margin: 0 0.8rem 0.5rem;
+            }
+            
+            .site-title {
+                font-size: 2.8rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            nav {
+                justify-content: center;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav li {
+                margin: 0.5rem 0;
+            }
+            
+            .site-title {
+                font-size: 2.2rem;
+            }
+            
+            .featured-content h2 {
+                font-size: 1.7rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1 class="site-title">HELLO WORLD</h1>
+            <p class="site-subtitle">NEWSPAPER | MAGAZINE | PUBLISHER</p>
+            
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Layout</a></li>
+                    <li><a href="#">News</a></li>
+                    <li><a href="#">Economy</a></li>
+                    <li><a href="#">Entertainment</a></li>
+                    <li><a href="#">Jobs</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <main class="container">
+        <!-- Sección principal con imagen destacada -->
+        <section class="featured-section">
+            <div class="featured-image">
+                <img src="https://placehold.co/600x400/1e3d32/FFFFFF/png?text=Breaking+News" alt="Imagen artículo destacado">
+            </div>
+            <div class="featured-content">
+                <h2>La inteligencia artificial revoluciona el periodismo moderno</h2>
+                <p class="article-meta">Por Carlos Méndez | 15 de Octubre, 2023</p>
+                <p>Las redacciones de todo el mundo están incorporando herramientas de IA para agilizar procesos, analizar datos y personalizar contenidos. Este cambio tecnológico está transformando la forma en que se produce y consume el periodismo.</p>
+                <p>Expertos debaten sobre el futuro del periodismo en la era algorítmica, donde los bots pueden escribir noticias financieras y deportivas, pero la contextualización y el análisis profundo siguen siendo dominio humano.</p>
+            </div>
+        </section>
+        
+        <!-- Sección de posts recientes -->
+        <section class="recent-posts">
+            <h2 class="section-title">Recent Posts</h2>
+            <ul class="post-list">
+                <li>
+                    <a href="#">El mercado de valores alcanza máximos históricos tras nuevas medidas económicas <span class="post-date">14 de Octubre, 2023</span></a>
+                </li>
+                <li>
+                    <a href="#">Festival internacional de cine anuncia sus nominados <span class="post-date">13 de Octubre, 2023</span></a>
+                </li>
+                <li>
+                    <a href="#">Descubrimiento científico podría revolucionar la energía renovable <span class="post-date">12 de Octubre, 2023</span></a>
+                </li>
+                <li>
+                    <a href="#">Nuevas tendencias en teletrabajo para 2024 <span class="post-date">11 de Octubre, 2023</span></a>
+                </li>
+                <li>
+                    <a href="#">La transformación digital de las pymes en la postpandemia <span class="post-date">10 de Octubre, 2023</span></a>
+                </li>
+            </ul>
+        </section>
+        
+        <!-- Secciones de trending y tags cloud -->
+        <div class="sidebar-sections">
+            <section class="sidebar-section">
+                <h3>Trending</h3>
+                <ul class="trending-list">
+                    <li><a href="#">Crisis energética en Europa: análisis y perspectivas</a></li>
+                    <li><a href="#">Las 10 startups más innovadoras del año</a></li>
+                    <li><a href="#">El impacto del cambio climático en la economía global</a></li>
+                    <li><a href="#">Tecnología 5G: lo que necesitas saber</a></li>
+                    <li><a href="#">El auge del periodismo independiente</a></li>
+                </ul>
+            </section>
+            
+            <section class="sidebar-section">
+                <h3>Tags Cloud</h3>
+                <div class="tags-cloud">
+                    <a href="#" class="tag tag-large">Tecnología</a>
+                    <a href="#" class="tag">Política</a>
+                    <a href="#" class="tag tag-large">Economía</a>
+                    <a href="#" class="tag">Cultura</a>
+                    <a href="#" class="tag tag-small">Deportes</a>
+                    <a href="#" class="tag">Salud</a>
+                    <a href="#" class="tag tag-large">Medio Ambiente</a>
+                    <a href="#" class="tag tag-small">Educación</a>
+                </div>
+            </section>
+        </div>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <div class="copyright">
+                © 2023 HELLO WORLD. All rights reserved. Designed by AllThemes.
+            </div>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
