@@ -3,22 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HELLO WORLD - Periódico en Línea</title>
+    <title>Global Times - Periódico Elegante</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Variables de colores y estilos */
-        :root {
-            --dark-green: #1e3d32;
-            --medium-green: #2a5746;
-            --light-green: #71B100;
-            --dark-gray: #333333;
-            --medium-gray: #777777;
-            --light-gray: #f5f5f5;
-            --white: #ffffff;
-            --transition: all 0.3s ease;
-        }
-        
-        /* Reset y estilos base */
         * {
             margin: 0;
             padding: 0;
@@ -26,466 +13,633 @@
         }
         
         body {
-            font-family: 'Helvetica', 'Arial', sans-serif;
+            font-family: 'Georgia', serif;
             line-height: 1.6;
-            color: var(--dark-gray);
-            background-color: var(--white);
-        }
-        
-        h1, h2, h3, h4 {
-            font-family: 'Georgia', 'Times New Roman', serif;
-            margin-bottom: 1rem;
-            color: var(--dark-green);
+            color: #2c3e50;
+            background-color: #f5f7fa;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
         }
         
         a {
             text-decoration: none;
-            color: #0066cc;
-            transition: var(--transition);
+            color: #2c3e50;
+            transition: color 0.3s;
         }
         
         a:hover {
-            color: var(--light-green);
+            color: #3498db;
         }
         
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
-        
-        /* Header */
         header {
-            padding: 2.5rem 0 1.5rem;
             text-align: center;
-            border-bottom: 1px solid #e0e0e0;
+            margin-bottom: 40px;
+            padding: 20px 0;
+            border-top: 2px solid #3498db;
+            border-bottom: 2px solid #3498db;
         }
         
-        .site-title {
-            font-size: 3.5rem;
-            text-transform: uppercase;
-            margin-bottom: 0.5rem;
+        .logo {
+            font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
+            font-size: 68px;
+            font-weight: bold;
+            margin-bottom: 5px;
             letter-spacing: 3px;
-            color: var(--dark-green);
+            color: #2c3e50;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
         }
         
-        .site-subtitle {
-            font-size: 0.9rem;
-            color: var(--medium-gray);
-            text-transform: uppercase;
+        .subtitle {
+            font-family: 'Georgia', serif;
+            font-size: 16px;
+            color: #7f8c8d;
+            margin-bottom: 30px;
             letter-spacing: 2px;
-            margin-bottom: 2rem;
+            font-weight: normal;
+            text-transform: uppercase;
         }
         
         nav {
             display: flex;
-            justify-content: flex-end;
+            justify-content: center;
+            align-items: center;
+            padding: 0 20px;
         }
         
-        nav ul {
+        .nav-menu {
             display: flex;
             list-style: none;
+            flex-wrap: wrap;
+            justify-content: center;
         }
         
-        nav li {
-            margin-left: 1.8rem;
-        }
-        
-        nav a {
-            font-weight: bold;
-            text-transform: uppercase;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
-            color: var(--dark-gray);
-            padding: 0.5rem 0;
+        .nav-menu li {
+            margin: 0 15px;
             position: relative;
         }
         
-        nav a:hover {
-            color: var(--light-green);
-        }
-        
-        nav a::after {
-            content: '';
+        .nav-menu li:not(:last-child):after {
+            content: "|";
             position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--light-green);
-            transition: var(--transition);
+            right: -18px;
+            top: 0;
+            color: #bdc3c7;
         }
         
-        nav a:hover::after {
-            width: 100%;
+        .nav-menu a {
+            font-family: 'Georgia', serif;
+            font-size: 17px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 600;
         }
         
-        /* Main Content */
-        .featured-section {
+        .nav-menu a:hover {
+            color: #3498db;
+        }
+        
+        .nav-right {
+            margin-left: 40px;
             display: flex;
-            margin: 2.5rem 0;
-            padding-bottom: 2rem;
-            border-bottom: 1px solid #e0e0e0;
+            align-items: center;
         }
         
-        .featured-image {
-            flex: 1;
-            padding-right: 2rem;
+        .search-icon {
+            margin-right: 20px;
+            cursor: pointer;
+            font-size: 18px;
+            color: #7f8c8d;
+            transition: color 0.3s;
         }
         
-        .featured-image img {
+        .search-icon:hover {
+            color: #3498db;
+        }
+        
+        .more-btn {
+            background-color: #3498db;
+            color: white;
+            padding: 8px 18px;
+            font-size: 14px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-family: 'Georgia', serif;
+        }
+        
+        .more-btn:hover {
+            background-color: #2980b9;
+        }
+        
+        .featured-section {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .main-article {
+            background-color: white;
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+        
+        .main-article:hover {
+            transform: translateY(-5px);
+        }
+        
+        .main-article-image {
             width: 100%;
-            height: auto;
-            border-radius: 4px;
+            height: 350px;
+            overflow: hidden;
         }
         
-        .featured-content {
-            flex: 1;
+        .main-article-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
         }
         
-        .featured-content h2 {
-            font-size: 2rem;
-            margin-bottom: 0.8rem;
+        .main-article:hover .main-article-image img {
+            transform: scale(1.05);
+        }
+        
+        .main-article-content {
+            padding: 25px;
+        }
+        
+        .main-article-title {
+            font-family: 'Georgia', serif;
+            font-size: 32px;
+            margin-bottom: 15px;
             line-height: 1.2;
+            color: #2c3e50;
         }
         
-        .article-meta {
-            color: var(--medium-gray);
-            font-style: italic;
-            font-size: 0.9rem;
-            margin-bottom: 1.2rem;
-        }
-        
-        .featured-content p {
-            margin-bottom: 1rem;
-            font-size: 1.05rem;
+        .main-article-excerpt {
+            font-size: 17px;
+            color: #34495e;
+            margin-bottom: 20px;
             line-height: 1.6;
         }
         
-        /* Recent Posts Section */
+        .main-article-meta {
+            display: flex;
+            font-size: 14px;
+            color: #7f8c8d;
+        }
+        
+        .main-article-date {
+            margin-right: 20px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .main-article-views {
+            display: flex;
+            align-items: center;
+        }
+        
+        .main-article-meta i {
+            margin-right: 6px;
+            font-size: 12px;
+            color: #3498db;
+        }
+        
+        .popular-articles {
+            background-color: white;
+            border-radius: 6px;
+            padding: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+        
+        .popular-title {
+            font-family: 'Georgia', serif;
+            font-size: 22px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #ecf0f1;
+            color: #2c3e50;
+        }
+        
+        .popular-article {
+            display: flex;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #ecf0f1;
+            transition: transform 0.3s;
+        }
+        
+        .popular-article:hover {
+            transform: translateX(5px);
+        }
+        
+        .popular-article:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        
+        .popular-article-image {
+            width: 80px;
+            height: 80px;
+            flex-shrink: 0;
+            margin-right: 15px;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .popular-article-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .popular-article:hover .popular-article-image img {
+            transform: scale(1.1);
+        }
+        
+        .popular-article-content {
+            flex-grow: 1;
+        }
+        
+        .popular-article-title {
+            font-family: 'Georgia', serif;
+            font-size: 16px;
+            margin-bottom: 8px;
+            line-height: 1.3;
+            color: #2c3e50;
+        }
+        
+        .popular-article-views {
+            font-size: 13px;
+            color: #7f8c8d;
+            display: flex;
+            align-items: center;
+        }
+        
+        .popular-article-views i {
+            margin-right: 5px;
+            font-size: 12px;
+            color: #3498db;
+        }
+        
         .recent-posts {
-            background-color: var(--light-gray);
-            padding: 2.5rem 0;
-            margin-bottom: 2rem;
+            margin-top: 40px;
         }
         
         .section-title {
+            font-family: 'Georgia', serif;
+            font-size: 28px;
+            margin-bottom: 30px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #3498db;
+            color: #2c3e50;
             text-align: center;
-            text-transform: uppercase;
-            font-size: 1.5rem;
             letter-spacing: 1px;
-            margin-bottom: 1.5rem;
-            color: var(--dark-green);
-            position: relative;
-            padding-bottom: 0.5rem;
         }
         
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 3px;
-            background-color: var(--light-green);
-        }
-        
-        .post-list {
-            list-style: none;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .post-list li {
-            padding: 1rem 0;
-            border-bottom: 1px solid #e0e0e0;
-        }
-        
-        .post-list li:last-child {
-            border-bottom: none;
-        }
-        
-        .post-list a {
-            display: block;
-            font-weight: bold;
-            font-size: 1.1rem;
-            transition: var(--transition);
-        }
-        
-        .post-list a:hover {
-            color: var(--light-green);
-            padding-left: 5px;
-        }
-        
-        .post-date {
-            font-size: 0.85rem;
-            color: var(--medium-gray);
-            display: block;
-            margin-top: 0.3rem;
-        }
-        
-        /* Sidebar Sections */
-        .sidebar-sections {
+        .news-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-            margin-bottom: 3rem;
+            gap: 25px;
         }
         
-        .sidebar-section {
-            padding: 1.8rem;
-            background-color: var(--light-gray);
-            border-radius: 4px;
-        }
-        
-        .sidebar-section h3 {
-            text-transform: uppercase;
-            font-size: 1.2rem;
-            margin-bottom: 1.2rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid var(--light-green);
-        }
-        
-        .trending-list {
-            list-style: none;
-        }
-        
-        .trending-list li {
-            padding: 0.8rem 0;
-            border-bottom: 1px solid #e0e0e0;
-        }
-        
-        .trending-list li:last-child {
-            border-bottom: none;
-        }
-        
-        .trending-list a {
-            font-weight: bold;
-            transition: var(--transition);
-        }
-        
-        .trending-list a:hover {
-            color: var(--light-green);
-        }
-        
-        /* Tags Cloud */
-        .tags-cloud {
+        .news-card {
             display: flex;
-            flex-wrap: wrap;
-            gap: 0.8rem;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            background-color: white;
+            height: 150px;
         }
         
-        .tag {
-            background-color: var(--white);
-            color: var(--dark-gray);
-            padding: 0.5rem 1rem;
-            border-radius: 3px;
-            font-size: 0.9rem;
-            transition: var(--transition);
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
         }
         
-        .tag:hover {
-            background-color: var(--light-green);
-            color: var(--white);
-            transform: translateY(-2px);
+        .news-image {
+            width: 150px;
+            height: 100%;
+            flex-shrink: 0;
+            overflow: hidden;
         }
         
-        .tag-large {
-            font-size: 1.1rem;
-            font-weight: bold;
+        .news-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
         }
         
-        .tag-small {
-            font-size: 0.8rem;
-            opacity: 0.8;
+        .news-card:hover .news-image img {
+            transform: scale(1.05);
         }
         
-        /* Footer */
-        footer {
-            background-color: var(--dark-green);
-            color: var(--white);
-            padding: 2.5rem 0;
-            text-align: center;
-            margin-top: 3rem;
-        }
-        
-        .copyright {
-            font-size: 0.9rem;
-            margin-bottom: 1.5rem;
-        }
-        
-        .social-icons {
+        .news-content {
+            padding: 18px;
+            flex-grow: 1;
             display: flex;
-            justify-content: center;
-            gap: 1.2rem;
+            flex-direction: column;
+            justify-content: space-between;
         }
         
-        .social-icons a {
-            color: var(--white);
-            font-size: 1.3rem;
-            transition: var(--transition);
+        .news-title {
+            font-family: 'Georgia', serif;
+            font-size: 19px;
+            margin-bottom: 10px;
+            line-height: 1.3;
+            color: #2c3e50;
         }
         
-        .social-icons a:hover {
-            color: var(--light-green);
-            transform: translateY(-3px);
+        .news-meta {
+            display: flex;
+            font-size: 13.5px;
+            color: #7f8c8d;
+            margin-top: auto;
         }
         
-        /* Responsive Design */
-        @media (max-width: 992px) {
-            .sidebar-sections {
+        .news-date {
+            margin-right: 20px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .news-views {
+            display: flex;
+            align-items: center;
+        }
+        
+        .news-meta i {
+            margin-right: 6px;
+            font-size: 12px;
+            color: #f4f6f7;
+        }
+        
+        @media (max-width: 900px) {
+            .featured-section {
                 grid-template-columns: 1fr;
+            }
+            
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .news-card {
+                height: auto;
             }
         }
         
         @media (max-width: 768px) {
-            .featured-section {
+            .logo {
+                font-size: 50px;
+            }
+            
+            .subtitle {
+                font-size: 14px;
+            }
+            
+            nav {
                 flex-direction: column;
             }
             
-            .featured-image {
-                padding-right: 0;
-                margin-bottom: 1.5rem;
+            .nav-right {
+                margin: 15px 0 0 0;
             }
             
-            nav ul {
-                flex-wrap: wrap;
-                justify-content: center;
+            .nav-menu li {
+                margin: 5px 12px;
             }
             
-            nav li {
-                margin: 0 0.8rem 0.5rem;
+            .main-article-image {
+                height: 250px;
             }
             
-            .site-title {
-                font-size: 2.8rem;
+            .main-article-title {
+                font-size: 26px;
             }
         }
         
-        @media (max-width: 576px) {
-            nav {
-                justify-content: center;
+        @media (max-width: 480px) {
+            .news-card, .popular-article {
+                flex-direction: column;
             }
             
-            nav ul {
+            .news-image, .popular-article-image {
+                width: 100%;
+                height: 180px;
+            }
+            
+            .popular-article-image {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+            
+            .logo {
+                font-size: 40px;
+            }
+            
+            .nav-menu {
                 flex-direction: column;
                 align-items: center;
             }
             
-            nav li {
-                margin: 0.5rem 0;
+            .nav-menu li:after {
+                display: none;
             }
             
-            .site-title {
-                font-size: 2.2rem;
+            .main-article-image {
+                height: 200px;
             }
             
-            .featured-content h2 {
-                font-size: 1.7rem;
+            .main-article-title {
+                font-size: 22px;
             }
         }
     </style>
 </head>
 <body>
     <header>
-        <div class="container">
-            <h1 class="site-title">HELLO WORLD</h1>
-            <p class="site-subtitle">NEWSPAPER | MAGAZINE | PUBLISHER</p>
+        <div class="logo">HELLO WORLD</div>
+        <div class="subtitle">INTERNATIONAL NEWS & INSIGHTS</div>
+        
+        <nav>
+            <ul class="nav-menu">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">World</a></li>
+                <li><a href="#">Politics</a></li>
+                <li><a href="#">Business</a></li>
+                <li><a href="#">Technology</a></li>
+                <li><a href="#">Culture</a></li>
+            </ul>
             
-            <nav>
-                <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Layout</a></li>
-                    <li><a href="#">News</a></li>
-                    <li><a href="#">Economy</a></li>
-                    <li><a href="#">Entertainment</a></li>
-                    <li><a href="#">Jobs</a></li>
-                </ul>
-            </nav>
-        </div>
+          
+        </nav>
     </header>
     
-    <main class="container">
-        <!-- Sección principal con imagen destacada -->
+    <main>
         <section class="featured-section">
-            <div class="featured-image">
-                <img src="https://placehold.co/600x400/1e3d32/FFFFFF/png?text=Breaking+News" alt="Imagen artículo destacado">
-            </div>
-            <div class="featured-content">
-                <h2>La inteligencia artificial revoluciona el periodismo moderno</h2>
-                <p class="article-meta">Por Carlos Méndez | 15 de Octubre, 2023</p>
-                <p>Las redacciones de todo el mundo están incorporando herramientas de IA para agilizar procesos, analizar datos y personalizar contenidos. Este cambio tecnológico está transformando la forma en que se produce y consume el periodismo.</p>
-                <p>Expertos debaten sobre el futuro del periodismo en la era algorítmica, donde los bots pueden escribir noticias financieras y deportivas, pero la contextualización y el análisis profundo siguen siendo dominio humano.</p>
-            </div>
-        </section>
-        
-        <!-- Sección de posts recientes -->
-        <section class="recent-posts">
-            <h2 class="section-title">Recent Posts</h2>
-            <ul class="post-list">
-                <li>
-                    <a href="#">El mercado de valores alcanza máximos históricos tras nuevas medidas económicas <span class="post-date">14 de Octubre, 2023</span></a>
-                </li>
-                <li>
-                    <a href="#">Festival internacional de cine anuncia sus nominados <span class="post-date">13 de Octubre, 2023</span></a>
-                </li>
-                <li>
-                    <a href="#">Descubrimiento científico podría revolucionar la energía renovable <span class="post-date">12 de Octubre, 2023</span></a>
-                </li>
-                <li>
-                    <a href="#">Nuevas tendencias en teletrabajo para 2024 <span class="post-date">11 de Octubre, 2023</span></a>
-                </li>
-                <li>
-                    <a href="#">La transformación digital de las pymes en la postpandemia <span class="post-date">10 de Octubre, 2023</span></a>
-                </li>
-            </ul>
-        </section>
-        
-        <!-- Secciones de trending y tags cloud -->
-        <div class="sidebar-sections">
-            <section class="sidebar-section">
-                <h3>Trending</h3>
-                <ul class="trending-list">
-                    <li><a href="#">Crisis energética en Europa: análisis y perspectivas</a></li>
-                    <li><a href="#">Las 10 startups más innovadoras del año</a></li>
-                    <li><a href="#">El impacto del cambio climático en la economía global</a></li>
-                    <li><a href="#">Tecnología 5G: lo que necesitas saber</a></li>
-                    <li><a href="#">El auge del periodismo independiente</a></li>
-                </ul>
-            </section>
-            
-            <section class="sidebar-section">
-                <h3>Tags Cloud</h3>
-                <div class="tags-cloud">
-                    <a href="#" class="tag tag-large">Tecnología</a>
-                    <a href="#" class="tag">Política</a>
-                    <a href="#" class="tag tag-large">Economía</a>
-                    <a href="#" class="tag">Cultura</a>
-                    <a href="#" class="tag tag-small">Deportes</a>
-                    <a href="#" class="tag">Salud</a>
-                    <a href="#" class="tag tag-large">Medio Ambiente</a>
-                    <a href="#" class="tag tag-small">Educación</a>
+            <article class="main-article">
+                <div class="main-article-image">
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Tecnología moderna">
                 </div>
-            </section>
-        </div>
+                <div class="main-article-content">
+                    <h2 class="main-article-title">Avances tecnológicos revolucionan la industria global en la próxima década</h2>
+                    <p class="main-article-excerpt">La inteligencia artificial y la automatización están transformando sectores enteros de la economía mundial, creando nuevas oportunidades y desafíos para empresas y trabajadores.</p>
+                    <div class="main-article-meta">
+                        <span class="main-article-date"><i class="far fa-calendar"></i> Junio 12, 2023</span>
+                        <span class="main-article-views"><i class="far fa-eye"></i> 4,210 views</span>
+                    </div>
+                </div>
+            </article>
+            
+            <div class="popular-articles">
+                <h3 class="popular-title">Trending Now</h3>
+                
+                <article class="popular-article">
+                    <div class="popular-article-image">
+                        <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Reunión de negocios">
+                    </div>
+                    <div class="popular-article-content">
+                        <h4 class="popular-article-title">Líderes mundiales se reúnen para discutir acuerdos económicos</h4>
+                        <div class="popular-article-views"><i class="far fa-eye"></i> 3,245 views</div>
+                    </div>
+                </article>
+                
+                <article class="popular-article">
+                    <div class="popular-article-image">
+                        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Persona escribiendo">
+                    </div>
+                    <div class="popular-article-content">
+                        <h4 class="popular-article-title">El auge del trabajo remoto: ¿Cómo está cambiando la cultura corporativa?</h4>
+                        <div class="popular-article-views"><i class="far fa-eye"></i> 2,890 views</div>
+                    </div>
+                </article>
+                
+                <article class="popular-article">
+                    <div class="popular-article-image">
+                        <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Presentación empresarial">
+                    </div>
+                    <div class="popular-article-content">
+                        <h4 class="popular-article-title">Innovaciones en energías renovables marcan record de eficiencia</h4>
+                        <div class="popular-article-views"><i class="far fa-eye"></i> 2,567 views</div>
+                    </div>
+                </article>
+                
+                <article class="popular-article">
+                    <div class="popular-article-image">
+                        <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1987&q=80" alt="Entrevista de trabajo">
+                    </div>
+                    <div class="popular-article-content">
+                        <h4 class="popular-article-title">El mercado laboral evoluciona: Las profesiones más demandadas</h4>
+                        <div class="popular-article-views"><i class="far fa-eye"></i> 2,310 views</div>
+                    </div>
+                </article>
+                
+                <article class="popular-article">
+                    <div class="popular-article-image">
+                        <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1964&q=80" alt="Conferencia de prensa">
+                    </div>
+                    <div class="popular-article-content">
+                        <h4 class="popular-article-title">Nuevas políticas educativas buscan preparar a las futuras generaciones</h4>
+                        <div class="popular-article-views"><i class="far fa-eye"></i> 2,150 views</div>
+                    </div>
+                </article>
+            </div>
+        </section>
+        
+        <section class="recent-posts">
+            <h2 class="section-title">Latest News</h2>
+            
+            <div class="news-grid">
+                <article class="news-card">
+                    <div class="news-image">
+                        <img src="https://images.unsplash.com/photo-1568992687947-868a62a9f521?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1932&q=80" alt="Mercado financiero">
+                    </div>
+                    <div class="news-content">
+                        <h3 class="news-title">Mercados globales reaccionan a las nuevas políticas monetarias</h3>
+                        <div class="news-meta">
+                            <span class="news-date"><i class="far fa-calendar"></i> Junio 11, 2023</span>
+                            <span class="news-views"><i class="far fa-eye"></i> 1,845 views</span>
+                        </div>
+                    </div>
+                </article>
+                
+                <article class="news-card">
+                    <div class="news-image">
+                        <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Tecnología y desarrollo">
+                    </div>
+                    <div class="news-content">
+                        <h3 class="news-title">Startups tecnológicas reciben inversión récord en primer semestre</h3>
+                        <div class="news-meta">
+                            <span class="news-date"><i class="far fa-calendar"></i> Junio 10, 2023</span>
+                            <span class="news-views"><i class="far fa-eye"></i> 1,689 views</span>
+                        </div>
+                    </div>
+                </article>
+                
+                <article class="news-card">
+                    <div class="news-image">
+                        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Finanzas y economía">
+                    </div>
+                    <div class="news-content">
+                        <h3 class="news-title">Sectores económicos emergentes muestran crecimiento sostenido</h3>
+                        <div class="news-meta">
+                            <span class="news-date"><i class="far fa-calendar"></i> Junio 9, 2023</span>
+                            <span class="news-views"><i class="far fa-eye"></i> 1,523 views</span>
+                        </div>
+                    </div>
+                </article>
+                
+                <article class="news-card">
+                    <div class="news-image">
+                        <img src="https://images.unsplash.com/photo-1434626881859-194d67b2b86f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2074&q=80" alt="Ciudad y negocios">
+                    </div>
+                    <div class="news-content">
+                        <h3 class="news-title">Urbanización inteligente: Las ciudades del futuro se construyen hoy</h3>
+                        <div class="news-meta">
+                            <span class="news-date"><i class="far fa-calendar"></i> Junio 8, 2023</span>
+                            <span class="news-views"><i class="far fa-eye"></i> 1,402 views</span>
+                        </div>
+                    </div>
+                </article>
+                
+                <article class="news-card">
+                    <div class="news-image">
+                        <img src="https://images.unsplash.com/photo-1556761175-4b46a572b786?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Equipo de trabajo">
+                    </div>
+                    <div class="news-content">
+                        <h3 class="news-title">Equipos multiculturales: El nuevo estándar en empresas globales</h3>
+                        <div class="news-meta">
+                            <span class="news-date"><i class="far fa-calendar"></i> Junio 7, 2023</span>
+                            <span class="news-views"><i class="far fa-eye"></i> 1,310 views</span>
+                        </div>
+                    </div>
+                </article>
+                
+                <article class="news-card">
+                    <div class="news-image">
+                        <img src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Trabajo en oficina">
+                    </div>
+                    <div class="news-content">
+                        <h3 class="news-title">Espacios de trabajo innovadores aumentan productividad en 40%</h3>
+                        <div class="news-meta">
+                            <span class="news-date"><i class="far fa-calendar"></i> Junio 6, 2023</span>
+                            <span class="news-views"><i class="far fa-eye"></i> 1,245 views</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
     </main>
-    
-    <footer>
-        <div class="container">
-            <div class="copyright">
-                © 2023 HELLO WORLD. All rights reserved. Designed by AllThemes.
-            </div>
-            <div class="social-icons">
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                <a href="#"><i class="fab fa-youtube"></i></a>
-            </div>
-        </div>
-    </footer>
 </body>
 </html>
